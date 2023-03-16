@@ -1,0 +1,111 @@
+@use './debug.scss';
+
+:root  {
+  --primary-1: #3498db;
+  --primary-2: #2980b9;
+  --danger-1: #e74c3c;
+  --danger-2: #c0392b;
+  --success-1: #2ecc71;
+  --success-2: #27ae60;
+  --gray-1: #f6f6f6;
+  --gray-2: #ddd;
+  --text-color: #444;
+  --text-primary-color: #ffffff;
+
+  --font-family: 'Roboto', sans-serif;
+  --border: 1px solid var(var(--gray-2));
+  --border-raduis: 4px;
+}
+
+// reset
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-family);
+  padding: 0;
+  margin: 0;
+  color: var(--text-color);
+  background-color: var(--gray-1);
+}
+
+// flex-box
+
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.fill {
+  flex: 1 1 auto;
+}
+
+// padding
+
+.p-10 {
+  padding: 10px;
+}
+.p-20 {
+  padding: 20px;
+}
+.p-30 {
+  padding: 30px;
+}
+.p-40 {
+  padding: 40px;
+}
+
+// margin
+
+.m-10 {
+  margin: 10px;
+}
+.m-20 {
+  margin: 20px;
+}
+.m-30 {
+  margin: 30px;
+}
+.m-40 {
+  margin: 40px;
+}
