@@ -4,6 +4,10 @@ import type { ProductI } from '@/interface/product.interface'
 defineProps<{
   product: ProductI
 }>()
+
+const emit = defineEmits<{
+  (e: 'addToCart', productId: number): void
+}>()
 </script>
 
 <template>
@@ -21,7 +25,9 @@ defineProps<{
       </p>
       <div class="flex flex-row items-center justify-center">
         <span class="fill">Prix: {{ product.price }} €</span>
-        <button class="btn btn-primary">Ajouter au panier</button>
+        <button class="btn btn-primary" @click="emit('addToCart', product.id)">
+          Ajouter au panier
+        </button>
       </div>
     </div>
   </li>
@@ -41,7 +47,7 @@ defineProps<{
     border-top-left-radius: var(--border-radius);
     background-size: cover;
     background-position: center;
-    height: 150px;
+    height: 200px;
     width: 100%;
   }
   span {

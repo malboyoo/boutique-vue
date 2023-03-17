@@ -5,11 +5,15 @@ import ShopProductList from './ShopProductList.vue'
 defineProps<{
   products: ProductI[]
 }>()
+
+const emit = defineEmits<{
+  (e: 'addToCart', productId: number): void
+}>()
 </script>
 
 <template>
-  <main class="">
-    <ShopProductList :products="products" />
+  <main>
+    <ShopProductList :products="products" @add-to-cart="emit('addToCart', $event)" />
   </main>
 </template>
 
