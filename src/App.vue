@@ -4,16 +4,20 @@ import Shop from './components/Shop/Shop.vue'
 import Cart from './components/Cart/Cart.vue'
 import Footer from './components/Footer.vue'
 import data from './data/products'
-import { reactive } from 'vue'
+import { reactive, computed } from 'vue'
 import type { ProductI } from './interface/product.interface'
 import type { ProductCartI } from './interface/productCart.interface'
+import type { FiltersI, FilterUpdateI } from './interface/filters.interface'
+import { DEFAULT_FILTER } from './data/filters'
 
 const state = reactive<{
   products: ProductI[]
   cart: ProductCartI[]
+  filters: FiltersI
 }>({
   products: data,
-  cart: []
+  cart: [],
+  filters: { ...DEFAULT_FILTER }
 })
 
 function addToCart(productId: number): void {
@@ -40,6 +44,34 @@ function deleteFromCart(productId: number): void {
     }
   }
 }
+
+const filteredProduct = computed((): ProductI[] => {
+  return state.products.filter((p) => {
+    if (
+      p.price >= state.filters.priceRange[0] &&
+      p.price <= state.filters.priceRange[1] &&
+      (p.category === state.filters.category || state.filters.category === 'all') &&
+      (p.title.toLocaleLowerCase().includes(state.filters.search.toLocaleLowerCase()) ||
+        state.filters.search === '')
+    ) {
+      return true
+    } else {
+      return false
+    }
+  })
+})
+
+function updateFilter(filterUpdate: FilterUpdateI) {
+  if (filterUpdate.search !== undefined) {
+    state.filters.search = filterUpdate.search
+  } else if (filterUpdate.priceRange) {
+    state.filters.priceRange = filterUpdate.priceRange
+  } else if (filterUpdate.category) {
+    state.filters.category = filterUpdate.category
+  } else {
+    state.filters = { ...DEFAULT_FILTER }
+  }
+}
 </script>
 
 <template>
@@ -50,7 +82,13 @@ function deleteFromCart(productId: number): void {
     }"
   >
     <Header class="header" />
-    <Shop :products="state.products" class="shop" @add-to-cart="addToCart" />
+    <Shop
+      @update-filter="updateFilter"
+      @add-to-cart="addToCart"
+      :products="filteredProduct"
+      :filters="state.filters"
+      class="shop"
+    />
     <Cart
       class="cart"
       :cart="state.cart"

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { FiltersI } from '@/interface/filters.interface'
 import type { ProductI } from '@/interface/product.interface'
 
 defineProps<{
@@ -43,11 +44,14 @@ const emit = defineEmits<{
     font-size: 12px;
   }
   .product-image {
+    align-self: center;
     border-top-right-radius: var(--border-radius);
     border-top-left-radius: var(--border-radius);
     background-size: cover;
     background-position: center;
+    max-height: 200px;
     height: 200px;
+    max-width: 307px;
     width: 100%;
   }
   span {
