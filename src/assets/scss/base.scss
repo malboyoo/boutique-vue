@@ -1,6 +1,8 @@
 @use './debug.scss';
+@use './mixins' as m;
+@use './transition';
 
-:root {
+:root  {
   --primary-1: #3498db;
   --primary-2: #2980b9;
   --danger-1: #e74c3c;
@@ -274,4 +276,10 @@ input {
   border-radius: var(--border-radius);
   background-color: white;
   padding: 30px;
+}
+
+.hide-xs {
+  @include m.xs {
+    display: none;
+  }
 }
