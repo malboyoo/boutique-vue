@@ -46,10 +46,25 @@ body {
   background-color: var(--gray-1);
 }
 
-input {
+input,
+select,
+textarea {
   border: var(--border);
   border-radius: var(--border-radius);
   padding: 5px 10px;
+}
+
+label {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--gray-3);
+}
+
+p,
+span,
+label,
+input {
+  font-size: 14px;
 }
 // flex-box
 
@@ -252,4 +267,11 @@ input {
   &:hover {
     background-color: var(--success-2);
   }
+}
+
+.card {
+  border: var(--border);
+  border-radius: var(--border-radius);
+  background-color: white;
+  padding: 30px;
 }

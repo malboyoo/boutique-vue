@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { DEFAULT_FILTER } from '@/data/filters'
 import type { Category, FiltersI, FilterUpdateI } from '@/interface/filters.interface'
 
 defineProps<{
@@ -15,7 +14,7 @@ const emit = defineEmits<{
 <template>
   <aside class="p-20 flex flex-col">
     <div class="fill">
-      <section class="mb-20">
+      <section class="mb-30">
         <h3 class="mb-10">Rechercher</h3>
         <input
           :value="filters.search"
@@ -24,7 +23,7 @@ const emit = defineEmits<{
           @input="emit('updateFilter', { search: ($event.target as HTMLInputElement).value })"
         />
       </section>
-      <section class="mb-20">
+      <section class="mb-30">
         <h3 class="mb-10">Trier par prix</h3>
         <div
           class="mb-5"
@@ -45,7 +44,7 @@ const emit = defineEmits<{
           <label :for="priceRange[0] + ''">{{ ` ${priceRange[0]}-${priceRange[1]}€` }}</label>
         </div>
       </section>
-      <section class="mb-20">
+      <section class="mb-30">
         <h3 class="mb-10">Trier par catégories</h3>
         <p
           class="category"

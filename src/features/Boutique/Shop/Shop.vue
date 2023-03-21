@@ -10,7 +10,7 @@ defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'addToCart', productId: number): void
+  (e: 'addToCart', productId: string): void
   (e: 'updateFilter', updateFilter: FilterUpdateI): void
 }>()
 </script>

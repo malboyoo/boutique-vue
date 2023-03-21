@@ -1,7 +1,7 @@
 import type { Category } from './filters.interface'
 
 export interface ProductI {
-  id: number
+  _id?: string
   title: string
   image: string
   price: number

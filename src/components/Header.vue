@@ -1,4 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const state = defineProps<{
+  page: string
+}>()
+
+const emit = defineEmits<{
+  (e: 'navigate', page: 'Boutique' | 'Admin'): void
+}>()
+</script>
 
 <template>
   <header class="flex flex-row items-center">
@@ -8,10 +16,24 @@
     </a>
     <ul class="flex flex-row fill">
       <li>
-        <a href="#">Shop</a>
+        <a
+          href="#"
+          @click="emit('navigate', 'Boutique')"
+          :class="{
+            active: state.page === 'Boutique'
+          }"
+          >Shop</a
+        >
       </li>
       <li>
-        <a href="#">Admin</a>
+        <a
+          href="#"
+          @click="emit('navigate', 'Admin')"
+          :class="{
+            active: state.page === 'Admin'
+          }"
+          >Admin</a
+        >
       </li>
     </ul>
     <ul class="flex flex-row mr-10">
@@ -28,6 +50,10 @@
 <style scoped lang="scss">
 header {
   background-color: var(--primary-1);
+  .active {
+    font-weight: 600;
+    text-decoration: underline;
+  }
   a {
     color: var(--text-primary-color);
     img {
@@ -41,6 +67,7 @@ header {
   }
   li {
     margin-right: 8px;
+    cursor: pointer;
   }
 }
 </style>

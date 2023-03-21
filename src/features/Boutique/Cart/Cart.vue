@@ -5,7 +5,7 @@ import CartProductList from './CartProductList.vue'
 const props = defineProps<{ cart: ProductCartI[] }>()
 
 const emit = defineEmits<{
-  (e: 'deleteFromCart', productId: number): void
+  (e: 'deleteFromCart', productId: string): void
 }>()
 
 const totalPrice = computed(() => {

@@ -4,7 +4,7 @@ import CartProduct from './CartProduct.vue'
 defineProps<{ cart: ProductCartI[] }>()
 
 const emit = defineEmits<{
-  (e: 'deleteFromCart', productId: number): void
+  (e: 'deleteFromCart', productId: string): void
 }>()
 </script>
 
@@ -13,7 +13,7 @@ const emit = defineEmits<{
     <CartProduct
       v-for="product of cart"
       :product="product"
-      :key="product.id"
+      :key="product._id"
       @delete-from-cart="emit('deleteFromCart', $event)"
     />
   </ul>

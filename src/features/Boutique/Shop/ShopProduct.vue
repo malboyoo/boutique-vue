@@ -7,12 +7,12 @@ defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'addToCart', productId: number): void
+  (e: 'addToCart', productId: string): void
 }>()
 </script>
 
 <template>
-  <li class="product flex flex-col p-5" :key="product.id">
+  <li class="product flex flex-col p-5" :key="product._id">
     <div
       class="product-image"
       :style="{
@@ -26,7 +26,7 @@ const emit = defineEmits<{
       </p>
       <div class="flex flex-row items-center justify-center">
         <span class="fill">Prix: {{ product.price }} €</span>
-        <button class="btn btn-primary" @click="emit('addToCart', product.id)">
+        <button class="btn btn-primary" @click="emit('addToCart', product._id as string)">
           Ajouter au panier
         </button>
       </div>
